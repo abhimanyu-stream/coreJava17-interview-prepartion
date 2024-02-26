@@ -1,12 +1,10 @@
 package com.java17.interview.prepartion;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class CustomImmutableClass {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws CloneNotSupportedException {
 
 
 		//Declare class as final.
@@ -16,11 +14,33 @@ public class CustomImmutableClass {
 		//If there are custom nested objects in the class as properties,, implement clone.
 		//If there are other types of nested objects as properties, perform a deep copy.
 
+		Address address1 = new Address("s1", "c1");
+		List<String> phoneNumbers = new ArrayList<>();
+		phoneNumbers.add("123345");
+		phoneNumbers.add("456789");
+		Map<String, String> metadata = new HashMap<>();
+		metadata.put("hobby", "Watching Movies");
+
+		Employee e = new Employee("Mindranda", 23, address1, phoneNumbers, metadata);
+
+		// trying to Employee Object modifications, but not able to do so.Thus Immutable. achieved by Cloneble Interface, clone() method., final keywords, priavte access modifiers.
+		e.getAddress().setCity("c3");
+		e.getAddress().setStreet("s3");
+
+		e.getPhoneNumbers().add("1234");
+		e.getMetadata().put("skill", "Java");
+		e.getMetadata().put("designation", "HR");
+
+		System.out.println(e.getEmpName());
+		System.out.println(e.getAge());
+		System.out.println(e.getAddress());
+		System.out.println(e.getPhoneNumbers());
+		System.out.println(e.getMetadata());
 
 
 	}
 
-	final class Employee{
+	static final class Employee{
 
 		private final String name;
 		private final int age;
@@ -37,7 +57,7 @@ public class CustomImmutableClass {
 			this.metadata = metadata;
 		}
 
-		public String getName() {
+		public String getEmpName() {
 			return name;
 		}
 
@@ -45,18 +65,20 @@ public class CustomImmutableClass {
 			return age;
 		}
 
-		public Address getAddress() {
-			return address;
+		// clone the address object
+		public Address getAddress() throws CloneNotSupportedException {
+			return (Address) address.clone();
 		}
 
+		// deep copy the list of phone numbers
 		public List<String> getPhoneNumbers() {
-			return phoneNumbers;
+			return new ArrayList<>(phoneNumbers);
 		}
 
+		// deep copy the map of metadata
 		public Map<String, String> getMetadata() {
-			return metadata;
+			return new HashMap<>(metadata);
 		}
-
 		@Override
 		public String toString() {
 			return "Employee{" +
@@ -82,7 +104,7 @@ public class CustomImmutableClass {
 		}
 	}
 
-	final class Address{
+	static final class Address implements Cloneable {
 
 		private String street;
 		private String city;
@@ -111,6 +133,17 @@ public class CustomImmutableClass {
 		@Override
 		public int hashCode() {
 			return Objects.hash(street, city);
+		}
+		public Object clone() throws CloneNotSupportedException {
+			return super.clone();
+		}
+
+		public void setStreet(String street) {
+			this.street = street;
+		}
+
+		public void setCity(String city) {
+			this.city = city;
 		}
 	}
 
