@@ -24,6 +24,8 @@ public class DeepCloningSchoolCloneableDepartmentCloneable {
         }
     }
 
+    /**@author */
+
 }
 
 
@@ -31,7 +33,7 @@ class Schooll implements Cloneable{
 
     private String name;
     private int id;
-    public Departmentt department;
+    private Departmentt department;
 
     public Schooll(String name, int id, Departmentt department) {
         this.name = name;
