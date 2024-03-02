@@ -18,10 +18,10 @@ public class CustomImmutableClass {
 		List<String> phoneNumbers = new ArrayList<>();
 		phoneNumbers.add("123345");
 		phoneNumbers.add("456789");
-		Map<String, String> metadata = new HashMap<>();
+		Map<String, String> metadata = new java.util.HashMap<>();
 		metadata.put("hobby", "Watching Movies");
-
-		Employee e = new Employee("Mindranda", 23, address1, phoneNumbers, metadata);
+		Date dateOfBirth = new Date(01/01/2024);
+		Employee e = new Employee("Mindranda", 23, address1, phoneNumbers, metadata, dateOfBirth);
 
 		// trying to Employee Object modifications, but not able to do so.Thus Immutable. achieved by Cloneble Interface, clone() method., final keywords, priavte access modifiers.
 		e.getAddress().setCity("c3");
@@ -36,6 +36,7 @@ public class CustomImmutableClass {
 		System.out.println(e.getAddress());
 		System.out.println(e.getPhoneNumbers());
 		System.out.println(e.getMetadata());
+		System.out.println(e);
 
 
 	}
@@ -44,17 +45,20 @@ public class CustomImmutableClass {
 
 		private final String name;
 		private final int age;
-		private final Address address;
+		private final Address address;// mutable
 		private final List<String> phoneNumbers;
 		private final Map<String, String> metadata;
 
+		private final Date dateOfBirth;// mutable
 
-		public Employee(String name, int age, Address address, List<String> phoneNumbers, Map<String, String> metadata){
+
+		public Employee(String name, int age, Address address, List<String> phoneNumbers, Map<String, String> metadata, Date dateOfBirth){
 			this.name = name;
 			this.age = age;
 			this.address = address;
 			this.phoneNumbers = phoneNumbers;
 			this.metadata = metadata;
+			this.dateOfBirth = dateOfBirth;
 		}
 
 		public String getEmpName() {
@@ -63,6 +67,14 @@ public class CustomImmutableClass {
 
 		public int getAge() {
 			return age;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public Date getDateOfBirth() {
+			return (Date) dateOfBirth.clone();
 		}
 
 		// clone the address object
@@ -77,8 +89,22 @@ public class CustomImmutableClass {
 
 		// deep copy the map of metadata
 		public Map<String, String> getMetadata() {
-			return new HashMap<>(metadata);
+			return new java.util.HashMap<>(metadata);
 		}
+
+		@Override
+		public boolean equals(Object o) {
+			if (this == o) return true;
+			if (o == null || getClass() != o.getClass()) return false;
+			Employee employee = (Employee) o;
+			return age == employee.age && name.equals(employee.name) && address.equals(employee.address) && phoneNumbers.equals(employee.phoneNumbers) && metadata.equals(employee.metadata) && dateOfBirth.equals(employee.dateOfBirth);
+		}
+
+		@Override
+		public int hashCode() {
+			return Objects.hash(name, age, address, phoneNumbers, metadata, dateOfBirth);
+		}
+
 		@Override
 		public String toString() {
 			return "Employee{" +
@@ -87,20 +113,8 @@ public class CustomImmutableClass {
 					", address=" + address +
 					", phoneNumbers=" + phoneNumbers +
 					", metadata=" + metadata +
+					", dateOfBirth=" + dateOfBirth +
 					'}';
-		}
-
-		@Override
-		public boolean equals(Object o) {
-			if (this == o) return true;
-			if (o == null || getClass() != o.getClass()) return false;
-			Employee employee = (Employee) o;
-			return age == employee.age && name.equals(employee.name) && address.equals(employee.address) && phoneNumbers.equals(employee.phoneNumbers) && metadata.equals(employee.metadata);
-		}
-
-		@Override
-		public int hashCode() {
-			return Objects.hash(name, age, address, phoneNumbers, metadata);
 		}
 	}
 
