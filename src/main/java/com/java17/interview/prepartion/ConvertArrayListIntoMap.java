@@ -21,5 +21,6 @@ public class ConvertArrayListIntoMap {
 
         }
         System.out.println(hashMap);
+        System.out.println(strList);
     }
 }

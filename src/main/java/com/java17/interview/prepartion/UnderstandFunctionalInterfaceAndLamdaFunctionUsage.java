@@ -7,6 +7,9 @@ public class UnderstandFunctionalInterfaceAndLamdaFunctionUsage {
 		
 		FindSquareRoot f = (n) -> { return Math.sqrt(n);};
 		System.out.println(f.findsqrt(23));
+		FindSquareRoot f2 = (n)->{return  Math.sqrt(n);};
+		f2.findsqrt(4);
+
 
 	}
 
@@ -15,4 +18,9 @@ public class UnderstandFunctionalInterfaceAndLamdaFunctionUsage {
 interface FindSquareRoot{
 	
 	public abstract double findsqrt(int n);
+	// static methods ok
+	// default methods ok
+	// public abstract internal access specifier
+
+
 }

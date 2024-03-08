@@ -19,6 +19,7 @@ public class FindSecondLargestAndSmallestNumberFromArrayUsingStreamAPI {
 	
 		System.out.println(scondSmallest);
 
+
 	}
 
 }
