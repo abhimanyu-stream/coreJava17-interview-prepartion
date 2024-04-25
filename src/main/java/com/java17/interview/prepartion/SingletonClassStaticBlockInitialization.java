@@ -1,27 +1,43 @@
 package com.java17.interview.prepartion;
 
-public class SingletonClassStaticBlockInitialization {
+import java.util.StringJoiner;
 
-	private static SingletonClassStaticBlockInitialization instance;
+class  SingletonDesignPattern{
 
-	private SingletonClassStaticBlockInitialization() {
+	private static SingletonDesignPattern instance = null;
+
+	private SingletonDesignPattern() {
+
+		if(instance != null)
+		throw new RuntimeException("You are tring to breaking Singleton Design Pattern");
 	}
 
 	static {
 
 		try {
-			instance = new SingletonClassStaticBlockInitialization();
+			if (instance == null)
+				instance = new SingletonDesignPattern();
+
 
 		} catch (Exception e) {
 			throw new RuntimeException("Exception occurred in creating singleton instance");
 		}
 	}
 
-	public SingletonClassStaticBlockInitialization getInstance() {
+	public static SingletonDesignPattern getInstance() {
 		return instance;
 	}
 
+
+}
+
+public class SingletonClassStaticBlockInitialization{
+
+
 	public static void main(String[] args) {
+
+		SingletonDesignPattern instance = SingletonDesignPattern.getInstance();
+		System.out.println(instance);
 
 	}
 
