@@ -12,7 +12,7 @@ public class StackCustomEmplementationUsingArray {
 
         SpringApplication.run(StackCustomEmplementationUsingArray.class, args);
 
-        Stack stack = new Stack();
+        Stack<Character> stack = new Stack<>();
 
         System.out.println(stack.isEmpty());
         stack.push(11);
@@ -41,7 +41,7 @@ public class StackCustomEmplementationUsingArray {
     }
 }
 
-class Stack{
+class Stack<C> {
 
     int top;
     int max_size = 5;
@@ -76,7 +76,7 @@ class Stack{
 
     // pop
 
-    public int pop(){
+    public Character pop(){
         int popped = -1;
         // check underflow
 
@@ -88,7 +88,7 @@ class Stack{
 
 
         }
-        return popped;
+        return (Character.valueOf((char) popped));
     }
 
     // peek
