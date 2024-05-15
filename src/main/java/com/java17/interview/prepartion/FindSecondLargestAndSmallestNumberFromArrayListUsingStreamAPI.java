@@ -16,7 +16,11 @@ public class FindSecondLargestAndSmallestNumberFromArrayListUsingStreamAPI {
 		
 		
 		int scondLargest  = listOfInteger.stream().sorted(Comparator.reverseOrder()).limit(2).skip(1).findFirst().get();
-		
+		//int[] intArray = {4,55,66,33,2,18};
+
+		//int scondLargest  = Arrays.stream(intArray).boxed().sorted(Comparator.reverseOrder()).limit(2).skip(1).findFirst().get();
+
+
 		System.out.println(scondLargest);
 		int scondSmallest  = listOfInteger.stream().sorted(Comparator.naturalOrder()).limit(2).skip(1).findFirst().get();
 	
