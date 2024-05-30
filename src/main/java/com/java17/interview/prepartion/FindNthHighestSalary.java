@@ -1,9 +1,6 @@
 package com.java17.interview.prepartion;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class FindNthHighestSalary {
@@ -35,7 +32,7 @@ public class FindNthHighestSalary {
         // Using Java Streams to process the map and find the nth highest salary
 
         // 1. Group employee names by their corresponding salaries
-        return employeeSalaries.entrySet()
+        /*return employeeSalaries.entrySet()
                 .stream()
                 .collect(Collectors.groupingBy(
                         Map.Entry::getValue, // Group by salary
@@ -48,7 +45,18 @@ public class FindNthHighestSalary {
                 // 3. Collect the sorted map entries into a List
                 .collect(Collectors.toList())
                 // 4. Get the nth element from the list (n - 1 as list index starts from 0)
-                .get(n - 1);
+                .get(n - 1);*/
+
+
+        return employeeSalaries.entrySet()
+                .stream()
+                .collect(Collectors.groupingBy(
+                        Map.Entry::getValue, Collectors.mapping(Map.Entry::getKey, Collectors.toList())
+                )).entrySet()
+                .stream().sorted(Collections.reverseOrder(Map.Entry.comparingByKey()))
+                .collect(
+                        Collectors.toList()
+                ).get((n- 1));
     }
 
     

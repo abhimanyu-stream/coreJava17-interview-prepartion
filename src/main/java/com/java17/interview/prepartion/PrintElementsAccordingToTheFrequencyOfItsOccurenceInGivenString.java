@@ -49,15 +49,24 @@ public class PrintElementsAccordingToTheFrequencyOfItsOccurenceInGivenString {
         for (char c : list) {
             System.out.print(c);
         }
+        System.out.println();
         System.out.println("-----------------------------------");
 
-// Count occurrences of each character
+
+
+
+
+
+
+        // Count occurrences of each character
         Map<Character, Long> charCountMap = str.chars()
                 .mapToObj(c -> (char) c)
                 .collect(Collectors.groupingBy(
                         Function.identity(),
                         Collectors.counting()
                 ));
+
+        System.out.println(charCountMap);
 
         // Construct the output string
         StringBuilder output = new StringBuilder();

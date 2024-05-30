@@ -107,8 +107,8 @@ public class RealTimeQueriesUsingJava8FeaturesEmployeeManagementSystem {
         // Who has the most working experience in the organization?
 
 
-
-
+        List<EmployeeOfMicrosoft> listOfEmployeeOfMicrosoft = employeeOfMicrosoftList.stream().filter(f-> f.getDepartment() == "HR").collect(Collectors.toList());
+        System.out.println(listOfEmployeeOfMicrosoft);
 
 
 
