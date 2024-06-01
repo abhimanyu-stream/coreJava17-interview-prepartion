@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class Test11 extends  Error{
+public class ConvertStringInToMapUsingStreamAPI extends  Error{
 
     public static void main(String[] args) {
 

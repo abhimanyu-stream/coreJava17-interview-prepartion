@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Test9 {
+public class RemoveDuplicatesFromListOfStringUsingStreamAPI {
 
     public static void main(String[] args) {
         List<String> names = Arrays.asList("Manikanta","Ravi","Dinesh","Mohan","Ravi"); //Remove the dublicate by using Stream api

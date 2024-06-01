@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class Test18 {
+public class FindDuplicatesElementsAndConvertStringToMapUsingStreamAPI {
 
 
     public static void main(String[] args) {

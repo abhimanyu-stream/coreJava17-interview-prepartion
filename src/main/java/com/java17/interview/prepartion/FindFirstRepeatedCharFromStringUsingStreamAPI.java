@@ -1,13 +1,10 @@
 package com.java17.interview.prepartion;
 
-import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static java.lang.Character.*;
-
-public class Test12 {
+public class FindFirstRepeatedCharFromStringUsingStreamAPI {
     public static void main(String[] args) {
 
         String str = "JavaJavaEE";

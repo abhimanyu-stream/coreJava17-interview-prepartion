@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.stream.Stream;
 
-public class Test17 {
+public class TwoSumEqualTOTagetInSortedArrayAndMaxMinStreamAPI {
 
     public static void main(String[] args) {
 
