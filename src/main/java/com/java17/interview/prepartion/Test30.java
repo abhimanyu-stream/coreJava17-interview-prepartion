@@ -2,6 +2,7 @@ package com.java17.interview.prepartion;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 public class Test30 {
 
@@ -130,6 +131,16 @@ Since 28 modulo 10 equals 0, this credit card number is valid.
             sum += digit;
             doubleDigit = !doubleDigit;
         }
+
+        return sum % 10 == 0;
+    }
+
+    public static boolean isValidCreditCardUsingStreamAPI(String cardNumber) {
+        int sum = IntStream.range(0, cardNumber.length())
+                .map(i -> Character.getNumericValue(cardNumber.charAt(cardNumber.length() - 1 - i)))
+                .map(i -> (i % 2 == 0) ? i * 2 : i)
+                .map(i -> (i > 9) ? i % 10 + i / 10 : i)
+                .sum();
 
         return sum % 10 == 0;
     }
