@@ -13,7 +13,7 @@ public class LongestCommonPrefixFromGivenStringArray {
         String  str = "Welcome to java world";
         String[] strArray = {"Amazon", "Amazone", "Amazonin"};
         String prefixResult = longestCommonPrefix(strArray);
-        System.out.println(prefixResult);
+        System.out.println("prefixResult   : " + prefixResult);
 
 
 
@@ -34,16 +34,30 @@ public class LongestCommonPrefixFromGivenStringArray {
         List<Integer> sortedList = list.stream().sorted().collect(Collectors.toList());
         System.out.println(sortedList);
 
-        // Find First non reepeated char from given String
+
+        Character firstnonreapeatedchar = str.chars()
+                .mapToObj(i-> Character.toLowerCase(Character.valueOf((char)i)))
+                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new , Collectors.counting()))
+.entrySet().stream().filter(f->f.getValue() == 1L).map(m->m.getKey()).findFirst().get();
+
+        System.out.println("firstnonreapeatedchar  :" + firstnonreapeatedchar);
+
+
+
+
+
+
+        // Find First reepeated char from given String
         Character result =  str.chars()           // IntStream
                 .mapToObj(i -> Character.toLowerCase(Character.valueOf((char) i)))  // convert to lowercase & then to Character object Stream
                 .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting())) // store in a LinkedHashMap with the count
                 .entrySet().stream()                       // EntrySet stream
-                .filter(entry -> entry.getValue() > 1L)   // extracts characters with a count of 1
+                .filter(entry -> entry.getValue() > 1L)   // extracts characters with a count > greater than  1
                 .map(entry -> entry.getKey())              // get the keys of EntrySet
                 .findFirst().get();  // get the first entry from the keys
 
-
+//  .filter(entry -> entry.getValue() > 1L)   // extracts characters with a count ==  1 first non repeated char
+//
         long resultCount =  str.chars()           // IntStream
                 .mapToObj(i -> Character.toLowerCase(Character.valueOf((char) i)))  // convert to lowercase & then to Character object Stream
                 .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting())) // store in a LinkedHashMap with the count

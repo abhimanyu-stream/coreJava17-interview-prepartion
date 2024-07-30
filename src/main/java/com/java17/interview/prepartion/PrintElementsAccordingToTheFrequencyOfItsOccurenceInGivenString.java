@@ -50,13 +50,23 @@ public class PrintElementsAccordingToTheFrequencyOfItsOccurenceInGivenString {
             System.out.print(c);
         }
         System.out.println();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         System.out.println("-----------------------------------");
-
-
-
-
-
-
 
         // Count occurrences of each character
         Map<Character, Long> charCountMap = str.chars()
@@ -71,10 +81,10 @@ public class PrintElementsAccordingToTheFrequencyOfItsOccurenceInGivenString {
         // Construct the output string
         StringBuilder output = new StringBuilder();
         charCountMap.entrySet().stream()
-                .sorted(Map.Entry.comparingByKey()) // Sort by character
+                .sorted(Map.Entry.comparingByKey()) // Sort by character[ key]
                 .forEach(entry -> {
-                    char c = entry.getKey();
-                    long counting = entry.getValue();
+                    char c = entry.getKey();// key
+                    long counting = entry.getValue();// value
                     for (int i = 0; i < counting; i++) {
                         output.append(c);
                     }

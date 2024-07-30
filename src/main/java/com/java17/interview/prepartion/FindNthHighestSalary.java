@@ -18,7 +18,7 @@ public class FindNthHighestSalary {
         map.put("Esa", 45000);
 
         // Specify the desired value of n
-        int n = 1;
+        int n = 2;
 
         // Get the nth highest salary along with the corresponding employee names
         Map.Entry<Integer, List<String>> res = getDynamicNthHighestSalary(map, n);

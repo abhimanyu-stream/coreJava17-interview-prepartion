@@ -1,6 +1,7 @@
 package com.java17.interview.prepartion;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class FromListOfStringFindMostRepeatedIPUsingStreamAPI {
 
@@ -26,12 +27,15 @@ public class FromListOfStringFindMostRepeatedIPUsingStreamAPI {
         for (String entry : list) {
             String[] parts = entry.split("-");
 
-            System.out.println(parts[0]);
-            System.out.println(parts[1]);
+
+
+            //System.out.println(parts[0]);
+            //System.out.println(parts[1]);
             String ipAddress = parts[0].trim(); // Extract the IP address
             ipCountMap.put(ipAddress, ipCountMap.getOrDefault(ipAddress, 0) + 1);
         }
 
+        //System.out.println(mostRepeatedIPByStreamAPI);
         // Find the IP address with the highest occurrence count
         String mostRepeatedIP = Collections.max(ipCountMap.entrySet(), Map.Entry.comparingByValue()).getKey();
 

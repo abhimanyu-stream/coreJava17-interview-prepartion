@@ -19,7 +19,7 @@ public class MaxSumOfConsecutiveElements {
         }
 
         // Find the maximum sum of consecutive elements
-        int maxSum = 0;
+        /*int maxSum = 0;
         int currentSum = 0;
         for (int i = 0; i < n; i++) {
             currentSum += arr[i];
@@ -29,6 +29,22 @@ public class MaxSumOfConsecutiveElements {
             if (currentSum < 0) {
                 currentSum = 0;
             }
+        }*/
+
+        int maxSum = 0;
+        int currentSum = 0;
+        for(int i = 0; i < arr.length; i++){
+
+            currentSum += arr[i];
+            if(currentSum > maxSum){
+                maxSum = currentSum;
+
+
+            }
+            if(currentSum < 0 ){
+                currentSum = 0;
+            }
+
         }
 
         // Print the maximum sum
