@@ -78,15 +78,34 @@ public class LongestCommonPrefixFromGivenStringArray {
 
 
     }
-    public static String longestCommonPrefix(String[] s){
+    public static String longestCommonPrefix(String[] strArray){
 
-        if(s.length == 0)
+        if(strArray.length == 0)
             return "";
 
-        String prefix = s[0];
-        for(int i = 1; i < s.length; i++){
+        String prefix = strArray[0];
+        for(int i = 1; i < strArray.length; i++){
 
-            while(s[i].indexOf(prefix) != 0 ){
+            while(strArray[i].indexOf(prefix) != 0 ){
+
+                prefix = prefix.substring(0, prefix.length() - 1);
+                if(prefix.isEmpty())
+                    return "";
+
+            }
+        }
+
+
+        return  prefix;
+    }
+    public static String longestCommonPrefix2(String[] strArray){
+
+        if(strArray.length == 0)
+            return "";
+
+        String prefix = strArray[0];
+        for(int i = 1; i < strArray.length; i++){
+            while(strArray[i].indexOf(prefix) != 0){
 
                 prefix = prefix.substring(0, prefix.length() - 1);
                 if(prefix.isEmpty())

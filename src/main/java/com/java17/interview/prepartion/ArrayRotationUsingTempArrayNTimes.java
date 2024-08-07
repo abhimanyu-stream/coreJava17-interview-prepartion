@@ -4,6 +4,7 @@ package com.java17.interview.prepartion;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class ArrayRotationUsingTempArrayNTimes {
 
@@ -18,6 +19,28 @@ public class ArrayRotationUsingTempArrayNTimes {
 
         // Function call
         rotate(arr, rotationTimes, arrayLength);
+        rotate2(arr, rotationTimes, arrayLength);
+
+    }
+
+    private static void rotate2(int[] arr, int rotationTimes, int arrayLength) {
+
+
+        int[] temp = new int[arrayLength];
+        int k = 0;
+        for(int i = rotationTimes; i < arrayLength; i++){
+            temp[k] = arr[i];
+            k++;
+
+        }
+        for(int i = 0; i < rotationTimes ; i++){
+            temp[k] = arr[i];
+            k++;
+        }
+        System.out.println("--------solution----------");
+        for(int i = 0; i < temp.length; i++){
+            System.out.println(arr[i] + " ");
+        }
 
     }
 

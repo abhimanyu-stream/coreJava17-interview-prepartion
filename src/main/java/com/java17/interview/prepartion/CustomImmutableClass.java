@@ -74,21 +74,25 @@ public class CustomImmutableClass {
 		}
 
 		public Date getDateOfBirth() {
+			// clone of Date object
 			return (Date) dateOfBirth.clone();
 		}
 
-		// clone the address object
+
 		public Address getAddress() throws CloneNotSupportedException {
+			// clone the address object
 			return (Address) address.clone();
 		}
 
-		// deep copy the list of phone numbers
+
 		public List<String> getPhoneNumbers() {
+			// deep copy the list of phone numbers
 			return new ArrayList<>(phoneNumbers);
 		}
 
-		// deep copy the map of metadata
+
 		public Map<String, String> getMetadata() {
+			// deep copy the map of metadata
 			return new java.util.HashMap<>(metadata);
 		}
 
